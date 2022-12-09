@@ -11,7 +11,7 @@ import homeRoutes from './routes/homeRoutes';
 import userRoutes from './routes/UserRoutes';
 import tokenRoutes from './routes/TokenRoutes';
 import alunoRoutes from './routes/alunoRoutes';
-import fotoRoutes from './routes/FotoRoutes';
+import fotoRoutes from './routes/fotoRoutes';
 
 class App {
   constructor() {
