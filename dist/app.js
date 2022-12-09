@@ -9,9 +9,9 @@ var _express = require('express'); var _express2 = _interopRequireDefault(_expre
 
 var _homeRoutes = require('./routes/homeRoutes'); var _homeRoutes2 = _interopRequireDefault(_homeRoutes);
 var _UserRoutes = require('./routes/UserRoutes'); var _UserRoutes2 = _interopRequireDefault(_UserRoutes);
-var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interopRequireDefault(_tokenRoutes);
-var _alunoRoutes = require('./routes/alunoRoutes'); var _alunoRoutes2 = _interopRequireDefault(_alunoRoutes);
-var _fotoRoutes = require('./routes/fotoRoutes'); var _fotoRoutes2 = _interopRequireDefault(_fotoRoutes);
+var _TokenRoutes = require('./routes/TokenRoutes'); var _TokenRoutes2 = _interopRequireDefault(_TokenRoutes);
+var _AlunoRoutes = require('./routes/AlunoRoutes'); var _AlunoRoutes2 = _interopRequireDefault(_AlunoRoutes);
+var _FotoRoutes = require('./routes/FotoRoutes'); var _FotoRoutes2 = _interopRequireDefault(_FotoRoutes);
 
 class App {
   constructor() {
@@ -29,9 +29,9 @@ class App {
   routes() {
     this.app.use('/', _homeRoutes2.default);
     this.app.use('/users/', _UserRoutes2.default);
-    this.app.use('/tokens/', _tokenRoutes2.default);
-    this.app.use('/alunos/', _alunoRoutes2.default);
-    this.app.use('/fotos/', _fotoRoutes2.default);
+    this.app.use('/tokens/', _TokenRoutes2.default);
+    this.app.use('/alunos/', _AlunoRoutes2.default);
+    this.app.use('/fotos/', _FotoRoutes2.default);
   }
 }
 
