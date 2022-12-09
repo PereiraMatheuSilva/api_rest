@@ -6,8 +6,9 @@ dotenv.config();
 import './database';
 
 import express from 'express';
+
 import homeRoutes from './routes/homeRoutes';
-import userRoutes from './routes/userRoutes';
+import userRoutes from './routes/UserRoutes';
 import tokenRoutes from './routes/tokenRoutes';
 import alunoRoutes from './routes/alunoRoutes';
 import fotoRoutes from './routes/fotoRoutes';
