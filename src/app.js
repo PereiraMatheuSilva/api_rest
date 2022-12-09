@@ -10,7 +10,7 @@ import express from 'express';
 import homeRoutes from './routes/homeRoutes';
 import userRoutes from './routes/UserRoutes';
 import tokenRoutes from './routes/TokenRoutes';
-import alunoRoutes from './routes/AlunoRoutes';
+import alunoRoutes from './routes/alunoRoutes';
 import fotoRoutes from './routes/FotoRoutes';
 
 class App {
