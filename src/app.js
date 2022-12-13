@@ -7,14 +7,15 @@ import cors from 'cors';
 import helmet from 'helmet';
 
 import homeRoutes from './routes/homeRoutes';
-import userRoutes from './routes/userRoutes';
-import tokenRoutes from './routes/tokenRoutes';
+import userRoutes from './routes/UserRoutes';
+import tokenRoutes from './routes/TokenRoutes';
 import alunoRoutes from './routes/alunoRoutes';
 import fotoRoutes from './routes/fotoRoutes';
 
 const whiteList = [
+  'https://react1.otaviomiranda.com.br',
+  'https://react2.otaviomiranda.com.br',
   'http://localhost:3000',
-  'http://http://35.247.231.243/',
 ];
 
 const corsOptions = {
