@@ -12,17 +12,6 @@ var _TokenRoutes = require('./routes/TokenRoutes'); var _TokenRoutes2 = _interop
 var _alunoRoutes = require('./routes/alunoRoutes'); var _alunoRoutes2 = _interopRequireDefault(_alunoRoutes);
 var _fotoRoutes = require('./routes/fotoRoutes'); var _fotoRoutes2 = _interopRequireDefault(_fotoRoutes);
 
-const allowlist = ['35.247.231.243', 'http://localhost:3001'];
-const corsOptionsDelegate = function (req, callback) {
-  let corsOptions;
-  if (allowlist.indexOf(req.header('origin')) !== -1) {
-    corsOptions = { origin: true }; // refletir (habilitar) a origem solicitada na resposta CORS
-  } else {
-    corsOptions = { origin: false }; // desativar CORS para esta solicitação
-  }
-  callback(null, corsOptions); // callback espera dois parâmetros: erro e opções
-};
-
 class App {
   constructor() {
     this.app = _express2.default.call(void 0, );
@@ -31,7 +20,7 @@ class App {
   }
 
   middlewares() {
-    this.app.use(_cors2.default.call(void 0, corsOptionsDelegate));
+    this.app.use(_cors2.default.call(void 0, '*'));
     this.app.use(_helmet2.default.call(void 0, ));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
