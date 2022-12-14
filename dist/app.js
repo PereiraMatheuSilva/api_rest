@@ -9,7 +9,7 @@ var _helmet = require('helmet'); var _helmet2 = _interopRequireDefault(_helmet);
 var _homeRoutes = require('./routes/homeRoutes'); var _homeRoutes2 = _interopRequireDefault(_homeRoutes);
 var _UserRoutes = require('./routes/UserRoutes'); var _UserRoutes2 = _interopRequireDefault(_UserRoutes);
 var _TokenRoutes = require('./routes/TokenRoutes'); var _TokenRoutes2 = _interopRequireDefault(_TokenRoutes);
-var _AlunoRoutes = require('./routes/AlunoRoutes'); var _AlunoRoutes2 = _interopRequireDefault(_AlunoRoutes);
+var _alunoRoutes = require('./routes/alunoRoutes'); var _alunoRoutes2 = _interopRequireDefault(_alunoRoutes);
 var _fotoRoutes = require('./routes/fotoRoutes'); var _fotoRoutes2 = _interopRequireDefault(_fotoRoutes);
 
 const whiteList = [
@@ -46,7 +46,7 @@ class App {
     this.app.use('/', _homeRoutes2.default);
     this.app.use('/users/', _UserRoutes2.default);
     this.app.use('/tokens/', _TokenRoutes2.default);
-    this.app.use('/alunos/', _AlunoRoutes2.default);
+    this.app.use('/alunos/', _alunoRoutes2.default);
     this.app.use('/fotos/', _fotoRoutes2.default);
   }
 }
