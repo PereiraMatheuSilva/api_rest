@@ -20,7 +20,7 @@ class App {
   }
 
   middlewares() {
-    this.app.use(cors('*'));
+    this.app.use(cors('Access-Control-Allow-Origin', '*'));
     this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
