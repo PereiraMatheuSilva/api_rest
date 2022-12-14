@@ -7,20 +7,24 @@ import cors from 'cors';
 import helmet from 'helmet';
 
 import homeRoutes from './routes/homeRoutes';
-import userRoutes from './routes/UserRoutes';
-import tokenRoutes from './routes/TokenRoutes';
+import userRoutes from './routes/userRoutes';
+import tokenRoutes from './routes/tokenRoutes';
 import alunoRoutes from './routes/alunoRoutes';
 import fotoRoutes from './routes/fotoRoutes';
 
-const allowlist = ['http://35.247.231.243', 'http://localhost:3000'];
-const corsOptionsDelegate = function (origin, callback) {
-  let corsOptions;
-  if (allowlist.indexOf(origin.header('Origin')) !== -1) {
-    corsOptions = { origin: true }; // Refletir (habilitar) a origem solicitada na resposta CORS
-  } else {
-    corsOptions = { origin: false }; // Desabilitar CORS para este pedido
-  }
-  callback(null, corsOptions); // Callback espera dois parâmetros: erro e opções
+const whiteList = [
+  'http://35.247.231.243',
+  'http://localhost:3000',
+];
+
+const corsOptions = {
+  origin(origin, callback) {
+    if (whiteList.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
 };
 
 class App {
@@ -31,7 +35,7 @@ class App {
   }
 
   middlewares() {
-    this.app.use(cors(corsOptionsDelegate));
+    this.app.use(cors(corsOptions));
     this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
