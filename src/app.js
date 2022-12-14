@@ -12,22 +12,6 @@ import tokenRoutes from './routes/TokenRoutes';
 import alunoRoutes from './routes/alunoRoutes';
 import fotoRoutes from './routes/fotoRoutes';
 
-const whitList = [
-  'http://35.247.231.243',
-  'http://localhost:3001',
-  'https://pt.wikipedia.org',
-];
-
-const corsOptions = {
-  origin(origin, callback) {
-    if (whitList.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
-
 class App {
   constructor() {
     this.app = express();
@@ -36,7 +20,7 @@ class App {
   }
 
   middlewares() {
-    this.app.use(cors(corsOptions));
+    this.app.use(cors('*'));
     this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
