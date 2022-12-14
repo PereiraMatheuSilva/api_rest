@@ -15,6 +15,7 @@ import fotoRoutes from './routes/fotoRoutes';
 const whitList = [
   'http://35.247.231.243',
   'http://localhost:3001',
+  'https://pt.wikipedia.org',
 ];
 
 const corsOptions = {
