@@ -7,20 +7,24 @@ var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors);
 var _helmet = require('helmet'); var _helmet2 = _interopRequireDefault(_helmet);
 
 var _homeRoutes = require('./routes/homeRoutes'); var _homeRoutes2 = _interopRequireDefault(_homeRoutes);
-var _UserRoutes = require('./routes/UserRoutes'); var _UserRoutes2 = _interopRequireDefault(_UserRoutes);
-var _TokenRoutes = require('./routes/TokenRoutes'); var _TokenRoutes2 = _interopRequireDefault(_TokenRoutes);
+var _userRoutes = require('./routes/userRoutes'); var _userRoutes2 = _interopRequireDefault(_userRoutes);
+var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interopRequireDefault(_tokenRoutes);
 var _alunoRoutes = require('./routes/alunoRoutes'); var _alunoRoutes2 = _interopRequireDefault(_alunoRoutes);
 var _fotoRoutes = require('./routes/fotoRoutes'); var _fotoRoutes2 = _interopRequireDefault(_fotoRoutes);
 
-const allowlist = ['http://35.247.231.243', 'http://localhost:3000'];
-const corsOptionsDelegate = function (origin, callback) {
-  let corsOptions;
-  if (allowlist.indexOf(origin.header('Origin')) !== -1) {
-    corsOptions = { origin: true }; // Refletir (habilitar) a origem solicitada na resposta CORS
-  } else {
-    corsOptions = { origin: false }; // Desabilitar CORS para este pedido
-  }
-  callback(null, corsOptions); // Callback espera dois parâmetros: erro e opções
+const whiteList = [
+  'http://35.247.231.243',
+  'http://localhost:3000',
+];
+
+const corsOptions = {
+  origin(origin, callback) {
+    if (whiteList.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
 };
 
 class App {
@@ -31,7 +35,7 @@ class App {
   }
 
   middlewares() {
-    this.app.use(_cors2.default.call(void 0, corsOptionsDelegate));
+    this.app.use(_cors2.default.call(void 0, corsOptions));
     this.app.use(_helmet2.default.call(void 0, ));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
@@ -40,8 +44,8 @@ class App {
 
   routes() {
     this.app.use('/', _homeRoutes2.default);
-    this.app.use('/users/', _UserRoutes2.default);
-    this.app.use('/tokens/', _TokenRoutes2.default);
+    this.app.use('/users/', _userRoutes2.default);
+    this.app.use('/tokens/', _tokenRoutes2.default);
     this.app.use('/alunos/', _alunoRoutes2.default);
     this.app.use('/fotos/', _fotoRoutes2.default);
   }
