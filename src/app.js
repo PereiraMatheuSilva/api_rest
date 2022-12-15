@@ -31,7 +31,11 @@ class App {
   }
 
   middlewares() {
+<<<<<<< HEAD
     this.app.use(cors(corsOptionsDelegate));
+=======
+    this.app.use('*', cors());
+>>>>>>> 769d9e3679be1c53884346623b6e2ae9dd07831d
     this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
