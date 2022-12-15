@@ -12,6 +12,17 @@ var _TokenRoutes = require('./routes/TokenRoutes'); var _TokenRoutes2 = _interop
 var _alunoRoutes = require('./routes/alunoRoutes'); var _alunoRoutes2 = _interopRequireDefault(_alunoRoutes);
 var _fotoRoutes = require('./routes/fotoRoutes'); var _fotoRoutes2 = _interopRequireDefault(_fotoRoutes);
 
+const allowlist = ['http://35.247.231.243', 'http://localhost:3000'];
+const corsOptionsDelegate = function (req, callback) {
+  let corsOptions;
+  if (allowlist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false }; // disable CORS for this request
+  }
+  callback(null, corsOptions); // callback expects two parameters: error and options
+};
+
 class App {
   constructor() {
     this.app = _express2.default.call(void 0, );
@@ -22,6 +33,7 @@ class App {
   middlewares() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.app.use(_cors2.default.call(void 0, '*'));
     this.app.use(_helmet2.default.call(void 0, { crossOriginOpenerPolicy: false }));
 =======
@@ -29,8 +41,10 @@ class App {
 =======
     this.app.use('*', _cors2.default.call(void 0, ));
 >>>>>>> 6bee299c6c72d36b726dabb347327d10275c4e80
+=======
+    this.app.use(_cors2.default.call(void 0, corsOptionsDelegate));
+>>>>>>> fbff11397aa388ad308c7b876db329f512fe5bc5
     this.app.use(_helmet2.default.call(void 0, ));
->>>>>>> 2f331c0e8a66102b13456090b44027657b253732
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
     this.app.use('/images/', _express2.default.static(_path.resolve.call(void 0, __dirname, '..', 'uploads', 'images')));
