@@ -31,20 +31,8 @@ class App {
   }
 
   middlewares() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    this.app.use(_cors2.default.call(void 0, '*'));
-    this.app.use(_helmet2.default.call(void 0, { crossOriginOpenerPolicy: false }));
-=======
-    this.app.use(_cors2.default.call(void 0, ));
-=======
-    this.app.use('*', _cors2.default.call(void 0, ));
->>>>>>> 6bee299c6c72d36b726dabb347327d10275c4e80
-=======
     this.app.use(_cors2.default.call(void 0, corsOptionsDelegate));
->>>>>>> fbff11397aa388ad308c7b876db329f512fe5bc5
-    this.app.use(_helmet2.default.call(void 0, ));
+    this.app.use(_helmet2.default.call(void 0, { crossOriginOpenerPolicy: false }));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
     this.app.use('/images/', _express2.default.static(_path.resolve.call(void 0, __dirname, '..', 'uploads', 'images')));
