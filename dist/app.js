@@ -21,10 +21,14 @@ class App {
 
   middlewares() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.app.use(_cors2.default.call(void 0, 'Access-Control-Allow-Origin', '*'));
     this.app.use(_helmet2.default.call(void 0, { crossOriginOpenerPolicy: false }));
 =======
     this.app.use(_cors2.default.call(void 0, ));
+=======
+    this.app.use('*', _cors2.default.call(void 0, ));
+>>>>>>> 6bee299c6c72d36b726dabb347327d10275c4e80
     this.app.use(_helmet2.default.call(void 0, ));
 >>>>>>> 2f331c0e8a66102b13456090b44027657b253732
     this.app.use(_express2.default.urlencoded({ extended: true }));
